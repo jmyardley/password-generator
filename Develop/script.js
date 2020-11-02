@@ -11,9 +11,12 @@ function askQuestions(){
   }
 
   var includeUpper = confirm("Include upper case letters?");
-  var includeLower = confirm("Include lower case letters?"):
+  var includeLower = confirm("Include lower case letters?");
   var includeNumbers = confirm("Include numbers?");
   var includeSpecial = confirm("Include special characters?");
+  if (includeUpper === false && includeLower === false && includeNumbers === false && includeSpecial === false) {
+    alert("Must include at least one uppercase letter, lowercase letter, special character, or number.")
+  }
 }
 
 function generatePassword(){
@@ -30,4 +33,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", askQuestions);
