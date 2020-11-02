@@ -44,28 +44,33 @@ function askQuestions(){
   return answers;
 }
 
-
+//Password generator  
 function generatePassword(){
 
   var userAnswers = askQuestions();
-  var useCharacters = [];
-
+  var combined = [];
+  
   console.log(userAnswers);
 
   if (userAnswers.useUppers){
     console.log("Include upper case letters");
+    combined.push(uppers);
   }
   if (userAnswers.useLowers){
     console.log("Include lower case letters");
+    combined.push(lowers);
   }
   if (userAnswers.useNumbers){
     console.log("Include numbers");
+    combined.push(numbers);
   }
   if (userAnswers.useSpecials){
     console.log("Include special chars");
+    combined.push(specials);
   }
 
-
+  var finalCharacters = [].concat.apply([], combined);
+  console.log(finalCharacters);
 
 
 }
