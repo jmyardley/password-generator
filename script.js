@@ -28,10 +28,6 @@ function askQuestions(){
     return;
   }
 
-  console.log(includeUppers);
-  console.log(includeLowers);
-  console.log(includeNumbers);
-  console.log(includeSpecials);
 
   var answers = {
     useUppers: includeUppers,
@@ -49,6 +45,7 @@ function generatePassword(){
 
   var userAnswers = askQuestions();
   var combined = [];
+  var typeCheck = []; //array with 
   
   console.log(userAnswers);
 
@@ -56,19 +53,29 @@ function generatePassword(){
   if (userAnswers.useUppers === true){
     console.log("Include upper case letters");
     combined.push(uppers);
+    typeCheck.push(uppers[Math.floor(Math.random() * Math.floor(uppers.length) )]);
   }
+  
+
   if (userAnswers.useLowers === true){
     console.log("Include lower case letters");
     combined.push(lowers);
+    typeCheck.push(lowers[Math.floor(Math.random() * Math.floor(lowers.length) )]);
   }
+
   if (userAnswers.useNumbers === true){
     console.log("Include numbers");
     combined.push(numbers);
+    typeCheck.push(numbers[Math.floor(Math.random() * Math.floor(numbers.length) )]);
   }
+
   if (userAnswers.useSpecials === true){
     console.log("Include special chars");
     combined.push(specials);
+    typeCheck.push(specials[Math.floor(Math.random() * Math.floor(specials.length) )]);
   }
+
+  console.log(typeCheck);
 
   var finalCharacterSet = [].concat.apply([], combined);
   console.log(finalCharacterSet);
@@ -78,6 +85,9 @@ function generatePassword(){
   for(var i = 0; i < userAnswers.useLength; i++){
     passwordCharacters.push(finalCharacterSet[Math.floor( Math.random() * Math.floor(finalCharacterSet.length) )]);
   }  
+  for(var i = 0; i < typeCheck.length; i++) {
+    passwordCharacters[i] = typeCheck[i];
+  }
 
   //Make array into a string and return it for the writePassword function to use
   console.log(passwordCharacters);
