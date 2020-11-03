@@ -70,15 +70,16 @@ function generatePassword(){
     combined.push(specials);
   }
 
-  var finalCharacters = [].concat.apply([], combined);
-  console.log(finalCharacters);
+  var finalCharacterSet = [].concat.apply([], combined);
+  console.log(finalCharacterSet);
 
   //Generate random array of characters
   passwordCharacters = [];
   for(var i = 0; i < userAnswers.useLength; i++){
-    passwordCharacters.push(finalCharacters[Math.floor( Math.random() * Math.floor(finalCharacters.length) )]);
+    passwordCharacters.push(finalCharacterSet[Math.floor( Math.random() * Math.floor(finalCharacterSet.length) )]);
   }  
 
+  //Make array into a string and return it for the writePassword function to use
   console.log(passwordCharacters);
   var realPassword = passwordCharacters.join('');
   return realPassword;
