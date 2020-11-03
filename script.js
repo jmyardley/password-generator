@@ -80,8 +80,9 @@ function generatePassword(){
   }  
 
   console.log(passwordCharacters);
+  var realPassword = passwordCharacters.join('');
+  return realPassword;
 
-  
 }
 
 // Write password to the #password input
