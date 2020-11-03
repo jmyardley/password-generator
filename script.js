@@ -52,19 +52,20 @@ function generatePassword(){
   
   console.log(userAnswers);
 
-  if (userAnswers.useUppers){
+  //Include arrays based on user prompts
+  if (userAnswers.useUppers === true){
     console.log("Include upper case letters");
     combined.push(uppers);
   }
-  if (userAnswers.useLowers){
+  if (userAnswers.useLowers === true){
     console.log("Include lower case letters");
     combined.push(lowers);
   }
-  if (userAnswers.useNumbers){
+  if (userAnswers.useNumbers === true){
     console.log("Include numbers");
     combined.push(numbers);
   }
-  if (userAnswers.useSpecials){
+  if (userAnswers.useSpecials === true){
     console.log("Include special chars");
     combined.push(specials);
   }
@@ -72,7 +73,15 @@ function generatePassword(){
   var finalCharacters = [].concat.apply([], combined);
   console.log(finalCharacters);
 
+  //Generate random array of characters
+  passwordCharacters = [];
+  for(var i = 0; i < userAnswers.useLength; i++){
+    passwordCharacters.push(finalCharacters[Math.floor( Math.random() * Math.floor(finalCharacters.length) )]);
+  }  
 
+  console.log(passwordCharacters);
+
+  
 }
 
 // Write password to the #password input
